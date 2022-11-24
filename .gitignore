@@ -1,0 +1,13 @@
+# Ignore python and pytest artifacts.
+__pycache__
+.pytest_cache
+
+# Don't add any text-to-speech engine binaries. This repo should only contain
+# files used to implement the OpenDec compiler.
+bin/*
+
+# Don't add any compilation artifacts or source code.
+*.opendec
+*.opendeci
+build/*
+export/*
