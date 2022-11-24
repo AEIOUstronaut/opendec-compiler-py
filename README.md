@@ -82,13 +82,13 @@ To compile a specific file:
 python compile.py bassline.opendec
 ```
 
-To compile files that relies on `sounds.opendeci`:
+To compile files that rely on `sounds.opendeci`:
 ```
 python compile.py -I imports harmony.opendec melody.opendec
 ```
 
-If you want to use an alternative engine, make sure that the binary is in the
-`bin` directory and run:
+If you want to use an alternative text-to-speech engine, make sure that the
+binary is in the `bin` directory and run:
 ```
 python compile.py -I import -e alternative.exe harmony.opendec melody.opendec
 ```
