@@ -139,12 +139,34 @@ if __name__ == "__main__":
 
     # Parse command line arguments.
     parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--cache", action="store_true", help="Save compiled files")
-    parser.add_argument("-e", "--engine", default="say.exe", help="Text-to-speech engine to use")
-    parser.add_argument("-I", "--include", action="append", default=[], help="Directories where included files may exist")
-    parser.add_argument("-v", "--verbose", action="count", default=0)
-    parser.add_argument("--clean", action="store_true", help="Clean up compiler artifacts")
-    parser.add_argument("sources", nargs="*", help="Opendec source file or text to compile.")
+    parser.add_argument(
+        "-c", "--cache", action="store_true",
+        help="Save compiled intermediate files in the `build` directory."
+    )
+    parser.add_argument(
+        "-e", "--engine", default="say.exe",
+        help="Text-to-speech engine to use. The engine must be in the `bin` " \
+            + "directory."
+    )
+    parser.add_argument(
+        "-I", "--include", action="append", default=[],
+        help="Directories where included files may exist. This includes any " \
+            + "files that are imported via [:import] or played via [:play]."
+    )
+    parser.add_argument(
+        "-v", "--verbose", action="count", default=0,
+        help="Increase the logging verbosity on STDOUT."
+    )
+    parser.add_argument(
+        "--clean", action="store_true",
+        help="Clean up compiler artifacts. This includes any intermediate " \
+            + "files that have been cached in the `build` directory and file " \
+            + "exported to the `export` directory."
+    )
+    parser.add_argument(
+        "sources", nargs="*",
+        help="Opendec source files or text to compile."
+    )
     args = parser.parse_args()
 
     configure_logging(args.verbose)
