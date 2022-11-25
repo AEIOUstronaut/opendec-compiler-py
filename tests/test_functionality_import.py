@@ -135,6 +135,4 @@ class TestFunctionalityImport:
         assert len(processor.state.sounds) == 0
         assert len(processor.state.voices) == 1
 
-        expected = VOICE_DEFAULTS.copy()
-        expected["sx"] = 0
-        assert processor.state.voices["name"] == expected
+        assert processor.state.voices["name"] == {"sx": 0}

@@ -122,13 +122,10 @@ class State(object):
                     f"Cannot overwrite default voice {name}"
                 )
 
-            parameters = VOICE_DEFAULTS.copy()
-            for parameter in node.parameters:
-                parameters[parameter] = node.parameters[parameter]
-            self.voices[name] = parameters
+            self.voices[name] = node.parameters
 
             logging.info(f"Registered voice '{name}'")
-            logging.debug(f"Registered voice '{name}' -> {parameters}")
+            logging.debug(f"Registered voice '{name}' -> {node.parameters}")
 
         # Unrecognized command type.
         else:

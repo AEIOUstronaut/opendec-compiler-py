@@ -217,16 +217,12 @@ class TestProcessor:
             assert buffer.buffer == f"[:play {os.path.join(DIR_TEST_FILES, 'blah.wav')}]"
 
     def test_process_name(self) -> None:
-        source = "[:voice name] { sx 0 } [:name name]"
+        source = "[:voice name] { sx 0 hs 110 } [:name name]"
         buffer, processor = self.__setup(source)
         processor.process()
 
-        expected = VOICE_DEFAULTS.copy()
-        expected["sx"] = 0
-        expected = "".join(f"[:dv {p} {expected[p]}]" for p in expected)
-
         assert "name" in processor.state.voices
-        assert buffer.buffer == expected
+        assert buffer.buffer == "[:np][:dv sx 0][:dv hs 110]"
 
     @pytest.mark.parametrize("source, expected", [
         # Basic phoneme processing - symbols.
@@ -336,7 +332,7 @@ class TestProcessor:
         ]
 
     def test_process_voice(self) -> None:
-        source = "[:voice name] { sx 0 }"
+        source = "[:voice name] { sx 0 hs 110}"
         buffer, processor = self.__setup(source)
         processor.process()
 
@@ -350,7 +346,5 @@ class TestProcessor:
         assert "name" not in processor.state.sounds
         assert "name" in processor.state.voices
 
-        expected = VOICE_DEFAULTS.copy()
-        expected["sx"] = 0
-        assert processor.state.voices["name"] == expected
+        assert processor.state.voices["name"] == {"sx": 0, "hs": 110}
 

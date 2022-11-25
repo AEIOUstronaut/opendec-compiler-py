@@ -101,17 +101,12 @@ class TestNode:
         state = State("", [])
         state.register(nodes[0])
 
-        parameters = VOICE_DEFAULTS.copy()
-        parameters["sx"] = 0
-        parameters["hs"] = 110
-        parameters["br"] = 10
-
         assert len(state.phrases) == 0
         assert len(state.sounds) == 0
         assert len(state.voices) == 1
 
         assert "name" in state.voices
-        assert state.voices["name"] == parameters
+        assert state.voices["name"] == {"sx": 0, "hs": 110, "br": 10}
 
     def test_no_shared_names(self):
         source = "[:sound same] {aa} [:phrase same] {aa}"

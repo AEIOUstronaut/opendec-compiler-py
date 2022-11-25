@@ -303,7 +303,10 @@ class Processor(object):
             raise ProcessorException(node.pos, "NameError", f"Name '{name}' is not defined")
 
         parameters = self.state.voices[name]
-        return "".join([f"[:dv {p} {parameters[p]}]" for p in parameters])
+
+        build = "[:np]"     # All user-defined voices are based on Paul.
+        build += "".join([f"[:dv {p} {parameters[p]}]" for p in parameters])
+        return build
 
     def __process_play_command(self, node: CommandNode) -> str:
         """Play a sound file. Before passing the command directly to the
