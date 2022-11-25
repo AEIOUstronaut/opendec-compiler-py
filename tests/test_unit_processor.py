@@ -14,7 +14,6 @@ from components.node import *
 from components.parser import Parser
 from components.processor import Processor
 from components.state import State
-from constants import VOICE_DEFAULTS
 from utils.exceptions import ProcessorException
 
 

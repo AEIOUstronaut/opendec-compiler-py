@@ -15,7 +15,6 @@ from constants import (
     DIR_BUILD,
     DIR_EXPORT,
     PHONEMES,
-    VOICE_DEFAULTS,
     VOICE_DEFAULT_NAMES,
 )
 from utils.exceptions import StateException

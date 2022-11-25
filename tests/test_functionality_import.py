@@ -12,11 +12,10 @@ if ROOTDIR not in sys.path:
 
 # Local imports should go under this comment.
 from components.lexer import Lexer
-from components.node import CommandNode, PhonemeNode, VoiceNode
+from components.node import CommandNode, PhonemeNode
 from components.parser import Parser
 from components.processor import Processor
 from components.state import State
-from constants import VOICE_DEFAULTS
 from utils.exceptions import StateException
 
 

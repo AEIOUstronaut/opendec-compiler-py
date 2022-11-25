@@ -133,42 +133,6 @@ BREAK_CHARS = WHITESPACE + SPECIAL_CHARACTERS + "/"
 
 
 # Voice constants.
-VOICE_DEFAULTS = {
-    # Vocal track parameters.
-    "sx": 1,    # Sex (0 for feminine, 1 for masculine)
-    "hs": 100,  # Head size
-    "f4": 3300, # Fourth formant frequency (Hz)
-    "f5": 3650, # Fifth formant frequency (Hz)
-    "b4": 260,  # Fourth formant bandwidth (Hz)
-    "b5": 330,  # Fifth formant bandwidth (Hz)
-
-    # Voicing sound source parameters.
-    "br": 0,    # Breathiness (dB)
-    "lx": 0,    # Lax breathiness
-    "sm": 3,    # Smoothness
-    "ri": 70,   # Richness
-    "nf": 0,    # Number of fixed samples of glottabl pulse open phase
-    "la": 0,    # Laryngealization (hard stops caused by larynx)
-
-    # Intonation parameters.
-    "bf": 18,   # Baseline fail (Hz)
-    "hr": 18,   # Hat rise (Hz)
-    "sr": 32,   # Stress rise (Hz)
-    "as": 100,  # Assertiveness
-    "qu": 40,   # Quickness
-    "ap": 122,  # Average pitch (Hz)
-    "pr": 100,  # Pitch range
-
-    # Gain adjustment parameters.
-    "lo": 86,   # Loudness of the voice (dB)
-    "gv": 65,   # Gain of voicing source (dB)
-    "gh": 70,   # Gain of aspiration source (dB)
-    "gf": 70,   # Gain of frication source (dB)
-    "g1": 68,   # Gain of cascade formant resonator 1 (dB)
-    "g2": 60,   # Gain of cascade formant resonator 2 (dB)
-    "g3": 49,   # Gain of cascade formant resonator 3 (dB)
-    "g4": 65,   # Gain of cascade formant resonator 4 (dB)
-}
 VOICE_DEFAULT_NAMES = [
     "Betty",
     "Dennis",
@@ -216,4 +180,4 @@ VOICE_MINMAX = {
     "g3": (0, 86),
     "g4": (0, 86),
 }
-VOICE_PARAMETERS = [parameter for parameter in VOICE_DEFAULTS]
+VOICE_PARAMETERS = [parameter for parameter in VOICE_MINMAX]

@@ -15,7 +15,6 @@ from components.lexer import Lexer
 from components.node import Node, CommandNode, PhonemeNode, VoiceNode
 from components.parser import Parser
 from components.state import State
-from constants import VOICE_DEFAULTS
 from utils.exceptions import StateException
 
 
