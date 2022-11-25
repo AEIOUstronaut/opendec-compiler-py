@@ -89,7 +89,7 @@ class State(object):
                     f"Cannot register phrase '{name}' - it is already a registered sound"
                 )
 
-            self.phrases[name] = node.context[:]
+            self.phrases[name] = node.context
             logging.info(f"Registered phrase '{name}'")
             logging.debug(f"Registered phrase '{name}' -> {self.phrases[name]}")
 

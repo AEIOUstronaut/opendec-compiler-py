@@ -175,7 +175,7 @@ class Processor(object):
         # than joining all components of the phrase together.
         elif node.phoneme in self.state.phrases:
             phrase = self.state.phrases[node.phoneme]
-            buffer = self.__process_context(phrase[:])
+            buffer = self.__process_context(phrase)
 
         # Process a sound. Special processing needs to be done here. Because a
         # sound can have variable length, we need to calculate vowel phoneme
@@ -286,7 +286,7 @@ class Processor(object):
         logging.info(f"Expanding loop ({node.parameters[0]}) at {node.pos}")
 
         # First we need to process the loop content.
-        build = self.__process_context(node.context[:])
+        build = self.__process_context(node.context)
         build = build * node.parameters[0]
         return build
 
