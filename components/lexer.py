@@ -161,7 +161,7 @@ class Lexer(object):
             else:
                 # If we get here, we never found the closing "*/".
                 raise LexerException(
-                    pos, "OpenBlockCommentException"
+                    pos, "OpenBlockCommentException",
                     "Found block comment that was not closed."
                 )
 
