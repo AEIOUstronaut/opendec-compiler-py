@@ -13,6 +13,8 @@ DIR_ROOT = os.path.abspath(os.path.join(__file__, ".."))
 DIR_BIN = os.path.join(DIR_ROOT, "bin")
 DIR_BUILD = os.path.join(os.getcwd(), "build")
 DIR_EXPORT = os.path.join(os.getcwd(), "export")
+DIR_LIB = os.path.join(os.getcwd(), "lib")
+DIR_SRC = os.path.join(os.getcwd(), "src")
 
 
 # Regexes.

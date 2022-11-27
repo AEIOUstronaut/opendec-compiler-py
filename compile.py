@@ -16,7 +16,14 @@ from components.lexer import Lexer
 from components.parser import Parser
 from components.processor import Processor
 from components.state import State
-from constants import DIR_BIN, DIR_BUILD, DIR_EXPORT, DIR_ROOT
+from constants import (
+    DIR_BIN,
+    DIR_BUILD,
+    DIR_EXPORT,
+    DIR_LIB,
+    DIR_ROOT,
+    DIR_SRC,
+)
 
 
 LOG_FILE = os.path.join(os.getcwd(), "build.log")
@@ -103,6 +110,7 @@ def validate_args(args: argparse.Namespace) -> argparse.Namespace:
     Returns:
         The parsed command line arguments.
     """
+    # Validate that the text-to-speech engine exists.
     engine = os.path.join(DIR_BIN, args.engine)
     if not os.path.exists(engine):
         raise FileNotFoundError(f"Could not find text-to-speech engine binary '{engine}'")
@@ -117,8 +125,14 @@ def validate_args(args: argparse.Namespace) -> argparse.Namespace:
 
     # Validate the source files.
     if len(args.sources) == 0:
-        allfiles = os.listdir(os.getcwd())
-        args.sources = [os.path.abspath(f) for f in allfiles if f.lower().endswith(".opendec")]
+        for filename in os.listdir(os.getcwd()):
+            args.sources.append(os.path.join(os.getcwd(), filename))
+
+        if os.path.isdir(DIR_SRC):
+            for filename in os.listdir(DIR_SRC):
+                args.sources.append(os.path.join(DIR_SRC, filename))
+
+        args.sources = [f for f in args.sources if f.lower().endswith(".opendec")]
 
     valid = []
     for source in args.sources:
@@ -149,7 +163,7 @@ if __name__ == "__main__":
             + "directory."
     )
     parser.add_argument(
-        "-I", "--include", action="append", default=[],
+        "-I", "--include", action="append", default=[DIR_LIB],
         help="Directories where included files may exist. This includes any " \
             + "files that are imported via [:import] or played via [:play]."
     )
